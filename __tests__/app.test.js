@@ -35,7 +35,7 @@ describe('03_separation-of-concerns-demo routes', () => {
     return request(app)
       .get('/api/v1/orders/')
       .then((res) => {
-        expect(res.body).toEqual(order);
+        expect(res.body).toEqual([order]);
       });
   });
 
