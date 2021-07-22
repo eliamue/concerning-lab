@@ -39,35 +39,39 @@ describe('03_separation-of-concerns-demo routes', () => {
       });
   });
 
-  // it('gets an order by id', async () => {
-  //   const order = await Order.insert({ quantity: 10 });
+  it('gets an order by id', async () => {
+    const order = await Order.insert({ quantity: 1 });
 
-  //   return request(app)
-  //     .get(`/api/v1/orders/${order.id}`)
-  //     .then((res) => {
-  //       expect(res.body).toEqual(order);
-  //     });
-  // });
+    return request(app)
+      .get(`/api/v1/orders/${order.id}`)
+      .then((res) => {
+        expect(res.body).toEqual(order);
+      });
+  });
 
-  // it('updates an order', async () => {
-  //   const order = await Order.insert({ quantity: 10 });
+  // it('updates a specific order', async () => {
+  //   const order = await Order.insert({ 
+  //     quantity: 2 
+  //   });
 
   //   return request(app)
   //     .put(`/api/v1/orders/${order.id}`)
   //     .then((res) => {
-  //       expect(res.body).toEqual(order);
+  //       expect(res.body).toEqual({ ...order, quantity: 2 });
   //     });
   // });
 
   // it('deletes an order', async () => {
-  //   const order = await Order.insert({ quantity: 10 });
+  //   const order = await Order.insert({ quantity: 0 });
 
   //   return request(app)
   //     .delete(`/api/v1/orders/${order.id}`)
   //     .then((res) => {
-  //       expect(res.body).toEqual(order);
+  //       expect(res.body).toEqual({
+  //         message: `Order ${order.id} has been deleted`
+
+  //       });
   //     });
   // });
-
 
 });
