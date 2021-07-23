@@ -49,12 +49,13 @@ describe('03_separation-of-concerns-demo routes', () => {
 
   it('updates a specific order', async () => {
     const order = await Order.insert({ 
-      quantity: 2 
+      quantity: 1 
     });
     return request(app)
       .put(`/api/v1/orders/${order.id}`)
+      .send({ quantity: 2 })
       .then((res) => {
-        expect(res.body).toEqual(order);
+        expect(res.body).toEqual({ ...order, quantity: 2 });
       });
   });
 
